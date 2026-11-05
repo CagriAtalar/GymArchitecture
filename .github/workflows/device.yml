@@ -1,0 +1,25 @@
+name: device
+
+on:
+  push:
+    paths: ["device/**", ".github/workflows/device.yml"]
+  pull_request:
+    paths: ["device/**", ".github/workflows/device.yml"]
+
+jobs:
+  check:
+    name: fmt, clippy, test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: device
+    steps:
+      - uses: actions/checkout@v4
+      # Installs the toolchain pinned in device/rust-toolchain.toml.
+      - run: rustup toolchain install
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: device
+      - run: cargo fmt --all --check
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+      - run: cargo test --workspace
