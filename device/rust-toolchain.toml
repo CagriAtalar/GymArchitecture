@@ -1,0 +1,5 @@
+# Pins the exact Rust version so every machine and CI build the device code identically.
+[toolchain]
+channel = "1.97.0"
+components = ["rustfmt", "clippy"]
+profile = "minimal"

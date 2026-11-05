@@ -1,0 +1,13 @@
+[package]
+name = "access-core"
+version = "0.1.0"
+description = "Hardware-independent, I/O-free access-control state machine for the GymGate turnstile."
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+# Intentionally no dependencies: the core must stay portable to a no_std microcontroller target.
+[dependencies]

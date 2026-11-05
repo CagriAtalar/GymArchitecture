@@ -1,0 +1,17 @@
+# Cargo workspace for all device-side Rust crates.
+# Members are added as their milestones begin (device-agent: M2, hardware-simulator: M2).
+[workspace]
+resolver = "3"
+members = ["access-core"]
+
+[workspace.package]
+edition = "2024"
+rust-version = "1.97"
+publish = false
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
